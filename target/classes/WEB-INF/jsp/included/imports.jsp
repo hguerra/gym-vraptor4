@@ -19,7 +19,11 @@
 	rel='stylesheet' type='text/css'>
 <script type="application/x-javascript">
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 </script>
 <script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
@@ -40,3 +44,9 @@
 	src="<%=request.getContextPath()%>/assets/js/jquery.contentcarousel.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/assets/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/proj-js/validate.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/proj-js/model.js"></script>

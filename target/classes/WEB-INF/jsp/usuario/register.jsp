@@ -12,24 +12,24 @@
 <div class="main">
           <div class="register-grids">
           	<div class="container">
-						<form> 
+						<form id= "register-form"> 
 								<div class="register-top-grid">
 										<h3>INFORMAÇAO PESSOAL</h3>
 										<div>
 											<span>Nome<label>*</label></span>
-											<input type="text"> 
+											<input name = "nome" id = "nome" type="text"> 
 										</div>
 										<div>
 											<span>Sobrenome<label>*</label></span>
-											<input type="text"> 
+											<input name = "sobreNome" id = "sobreNome" type="text"> 
 										</div>
 										<div>
 											<span>Email<label>*</label></span>
-											<input type="text"> 
+											<input name = "email" id = "email" type="text"> 
 										</div>
 										<div class="clear"> </div>
 											<a class="news-letter" href="#">
-												<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
+												<label class="checkbox"><input id = "agree" type="checkbox" name="agree" checked=""><i> </i>Sign Up for Newsletter</label>
 											</a>
 										<div class="clear"> </div>
 								</div>
@@ -37,12 +37,16 @@
 								<div class="register-bottom-grid">
 										<h3>INFORMAÇÃO DE LOGIN</h3>
 										<div>
-											<span>Password<label>*</label></span>
-											<input type="text">
+											<span>Login<label>*</label></span>
+											<input id = "login" name="login"  type="text">
 										</div>
 										<div>
-											<span>Confirmar Password<label>*</label></span>
-											<input type="text">
+											<span>Senha<label>*</label></span>
+											<input id = "password" name="password"  type="password">
+										</div>
+										<div>
+											<span>Confirmar Senha<label>*</label></span>
+											<input id = "confirm_password" name="confirm_password"  type="password">
 										</div>
 										<div class="clear"> </div>
 								</div>

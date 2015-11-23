@@ -137,25 +137,25 @@
 						<span style="color: white;">Horario de Funcionamento</span> <br>
 						<br>
 						<ul class="times">
-							<li><i class="calender"> </i><span class="week">Monday</span>
+							<li><i class="calender"> </i><span class="week">Segunda</span>
 								<div class="hours">h.6:00-h.24:00</div>
 								<div class="clear"></div></li>
-							<li><i class="calender"> </i><span class="week">Tuesday</span>
+							<li><i class="calender"> </i><span class="week">Terça</span>
 								<div class="hours">h.6:00-h.24:00</div>
 								<div class="clear"></div></li>
-							<li><i class="calender"> </i><span class="week">Wednesday</span>
+							<li><i class="calender"> </i><span class="week">Quarta</span>
 								<div class="hours">h.6:00-h.24:00</div>
 								<div class="clear"></div></li>
-							<li><i class="calender"> </i><span class="week">Thrusday</span>
+							<li><i class="calender"> </i><span class="week">Quinta</span>
 								<div class="hours">h.6:00-h.24:00</div>
 								<div class="clear"></div></li>
-							<li><i class="calender"> </i><span class="week">Friday</span>
+							<li><i class="calender"> </i><span class="week">Sexta</span>
 								<div class="hours">h.6:00-h.24:00</div>
 								<div class="clear"></div></li>
-							<li><i class="calender"> </i><span class="week">Saturday</span>
+							<li><i class="calender"> </i><span class="week">Sabado</span>
 								<div class="hours">h.6:00-h.24:00</div>
 								<div class="clear"></div></li>
-							<li><i class="calender"> </i><span class="week">Sunday</span>
+							<li><i class="calender"> </i><span class="week">Domingo</span>
 								<div class="hours">h.6:00-h.24:00</div>
 								<div class="clear"></div></li>
 						</ul>
