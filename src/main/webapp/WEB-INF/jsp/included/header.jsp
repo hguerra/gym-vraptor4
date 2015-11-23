@@ -48,20 +48,20 @@
 <div class="menu" id="menu">
 	<div class="container">
 		<div class="logo">
-			<a href="index.html"><img
+			<a href="index.jsp"><img
 				src="<%=request.getContextPath()%>/assets/images/logo.png" alt="" /></a>
 		</div>
 		<div class="h_menu4">
 			<!-- start h_menu4 -->
 			<a class="toggleMenu" href="#">Menu</a>
 			<ul class="nav">
-				<li class="active"><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="trainers.html">Trainers</a></li>
-				<li><a href="classes.html">Classes</a></li>
-				<li><a href="blog.html">Blog</a></li>
-				<li><a href="pricing.html">Pricing</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li class="active"><a href="index.jsp">Home</a></li>
+				<li><a href="about.jsp">About</a></li>
+				<li><a href="trainers.jsp">Trainers</a></li>
+				<li><a href="classes.jsp">Classes</a></li>
+				<li><a href="blog.jsp">Blog</a></li>
+				<li><a href="pricing.jsp">Pricing</a></li>
+				<li><a href="contact.jsp">Contact</a></li>
 			</ul>
 			<script type="text/javascript"
 				src="<%=request.getContextPath()%>/assets/js/nav.js"></script>

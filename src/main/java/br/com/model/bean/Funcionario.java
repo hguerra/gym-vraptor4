@@ -3,8 +3,7 @@ package br.com.model.bean;
 import java.time.LocalDate;
 import java.time.MonthDay;
 
-public class Funcionario extends Pessoa {
-	private long id;
+public class Funcionario extends Usuario {
 	private Email email;
 	private LocalDate dataContratacao;
 	private MonthDay dataPagamento;
@@ -35,14 +34,6 @@ public class Funcionario extends Pessoa {
 
 	public void setEmail(Email email) {
 		this.email = email;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public MonthDay getDataPagamento() {

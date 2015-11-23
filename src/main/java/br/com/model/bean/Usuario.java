@@ -1,6 +1,8 @@
 package br.com.model.bean;
 
-abstract class Pessoa {
+public class Usuario {
+	private long id;
+	private String login;
 	private String nome;
 	private String sobreNome;
 	private Endereco endereco;
@@ -29,5 +31,23 @@ abstract class Pessoa {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
+
 
 }

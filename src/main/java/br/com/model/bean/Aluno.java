@@ -3,8 +3,7 @@ package br.com.model.bean;
 import java.time.LocalDate;
 import java.time.MonthDay;
 
-public class Aluno extends Pessoa {
-	private long id;
+public class Aluno extends Usuario {
 	private String email;
 	private LocalDate dataMatricula;
 	private MonthDay dataVencimento;
@@ -51,14 +50,6 @@ public class Aluno extends Pessoa {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 }

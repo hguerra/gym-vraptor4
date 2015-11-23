@@ -28,7 +28,7 @@
 			<div class="row content-middle">
 				<!-- start content-middle -->
 				<div class="col-md-4">
-					<a href="pricing.html">
+					<a href="pricing.jsp">
 						<ul class="spinning">
 							<li class="live">live <span class="m_1">Spinning</span></li>
 							<li class="room">Room 2</li>
@@ -43,7 +43,7 @@
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a href="pricing.html">
+					<a href="pricing.jsp">
 						<ul class="spinning">
 							<li class="live">live <span class="m_1">Gym</span></li>
 							<li class="room">Room 1</li>
@@ -58,7 +58,7 @@
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a href="pricing.html">
+					<a href="pricing.jsp">
 						<ul class="spinning">
 							<li class="live">live <span class="m_1">Pilates</span></li>
 							<li class="room">Room 4</li>
