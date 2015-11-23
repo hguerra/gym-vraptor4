@@ -7,4 +7,6 @@ import br.com.model.bean.Aluno;
 
 public interface AlunoHibernateDao extends Dao<Aluno>{
 	List<Aluno> buscaTodosAlunoQueDevemDinheiro();
+	List<Aluno> buscaTodosAlunosEmDia();
+	
 }

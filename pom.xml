@@ -57,6 +57,12 @@
 			<version>1.7.5</version>
 		</dependency>
 		<!-- vraptor -->
+		<!-- plugins vraptor -->
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-java8</artifactId>
+			<version>4.0.0.Final</version>
+		</dependency>
 	</dependencies>
 	<!-- /dependencias -->
 	<!-- configuracoes do projeto -->

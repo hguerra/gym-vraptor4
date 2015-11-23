@@ -14,4 +14,10 @@ public class AlunoDao extends GenericHibernateDao<Aluno> implements AlunoHiberna
 		return null;
 	}
 
+	@Override
+	public List<Aluno> buscaTodosAlunosEmDia() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
