@@ -14,17 +14,17 @@
           	<div class="container">
 						<form> 
 								<div class="register-top-grid">
-										<h3>PERSONAL INFORMATION</h3>
+										<h3>INFORMAÇAO PESSOAL</h3>
 										<div>
-											<span>First Name<label>*</label></span>
+											<span>Nome<label>*</label></span>
 											<input type="text"> 
 										</div>
 										<div>
-											<span>Last Name<label>*</label></span>
+											<span>Sobrenome<label>*</label></span>
 											<input type="text"> 
 										</div>
 										<div>
-											<span>Email Address<label>*</label></span>
+											<span>Email<label>*</label></span>
 											<input type="text"> 
 										</div>
 										<div class="clear"> </div>
@@ -35,13 +35,13 @@
 								</div>
 								<div class="clear"> </div>
 								<div class="register-bottom-grid">
-										<h3>LOGIN INFORMATION</h3>
+										<h3>INFORMAÇÃO DE LOGIN</h3>
 										<div>
 											<span>Password<label>*</label></span>
 											<input type="text">
 										</div>
 										<div>
-											<span>Confirm Password<label>*</label></span>
+											<span>Confirmar Password<label>*</label></span>
 											<input type="text">
 										</div>
 										<div class="clear"> </div>

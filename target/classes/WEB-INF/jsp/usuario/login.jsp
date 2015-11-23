@@ -14,10 +14,9 @@
           	<div class="container">
 			  <div class="col-md-6">
 				 <div class="login-page">
-					<h4 class="title">New Customers</h4>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</p>
+					<h4 class="title">Novo Cliente?</h4>
 					<div class="button1">
-					   <a href="register.jsp"><input type="submit" name="Submit" value="Create an Account"></a>
+					   <a href="register.jsp"><input type="submit" name="Submit" value="Criar conta"></a>
 					 </div>
 					 <div class="clear"></div>
 				  </div>
@@ -25,7 +24,7 @@
 				<div class="col-md-6">
 				 <div class="login-page">
 				  <div class="login-title">
-	           		<h4 class="title">Registered Customers</h4>
+	           		<h4 class="title">Clientes Registrados</h4>
 					<div id="loginbox" class="loginbox">
 						<form action="" method="post" name="login" id="login-form">
 						  <fieldset class="input">

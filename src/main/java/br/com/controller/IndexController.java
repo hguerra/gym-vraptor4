@@ -28,48 +28,28 @@ public class IndexController {
 	public void index() {
 	}
 
-	@Path("/about.jsp")
-	public void about() {
+	@Path("/eventos.jsp")
+	public void eventos() {
 	}
 	
-	@Path("/blogSingle.jsp")
-	public void blogSingle() {
-	}
-	
-	@Path("/blog.jsp")
-	public void blog() {
-	}
-	
-	@Path("/classes.jsp")
-	public void classes() {
-	}
-	
-	@Path("/contact.jsp")
-	public void contact() {
-	}
 	
 	@Path("/pricing.jsp")
 	public void pricing() {
 	}
 	
 	
-	@Path("/singleClass.jsp")
-	public void singleClass() {
-	}
-	
 	@Path("/trainers.jsp")
 	public void trainers() {
 	}
 	
 	@Path("/login.jsp")
-	public void login() {
-		// TODO Auto-generated method stub
-
+	public void login(){
+		result.forwardTo(UsuarioController.class).login();
 	}
+	
 	@Path("/register.jsp")
-	public void register() {
-		// TODO Auto-generated method stub
-
+	public void register(){
+		result.forwardTo(UsuarioController.class).register();
 	}
 	
 }

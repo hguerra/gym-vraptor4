@@ -14,16 +14,11 @@
 			</div>
 			<div class="col-md-6">
 				<div class="f-logo">
-					<img src="<%=request.getContextPath()%>/assets/images/logo.png" alt="" />
+					<img src="<%=request.getContextPath()%>/assets/images/logo.png"
+						alt="" />
 				</div>
-				
-				<p class="address">
-					Phone : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="m_10">(00)
-						222 666 444</span>
-				</p>
-				<p class="address">
-					Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="m_10">info[at]mycompany.com</span>
-				</p>
+
+
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -33,17 +28,6 @@
 	<div class="container">
 		<div class="copy">
 			<p>© 2015 by Heitor e Isabela</p>
-		</div>
-		<div class="social">
-			<ul>
-				<li class="facebook"><a href="#"><span> </span></a></li>
-				<li class="twitter"><a href="#"><span> </span></a></li>
-				<li class="pinterest"><a href="#"><span> </span></a></li>
-				<li class="google"><a href="#"><span> </span></a></li>
-				<li class="tumblr"><a href="#"><span> </span></a></li>
-				<li class="instagram"><a href="#"><span> </span></a></li>
-				<li class="rss"><a href="#"><span> </span></a></li>
-			</ul>
 		</div>
 		<div class="clear"></div>
 	</div>

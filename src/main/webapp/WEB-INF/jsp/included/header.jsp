@@ -9,7 +9,7 @@
 			<br>
 			<br>
 			<div class="banner_btn">
-				<a href="#">Entrar</a>
+				<a href="login.jsp">Entrar</a>
 			</div>
 		</div>
 		<div class="header-arrow">
@@ -55,13 +55,10 @@
 			<!-- start h_menu4 -->
 			<a class="toggleMenu" href="#">Menu</a>
 			<ul class="nav">
-				<li class="active"><a href="index.jsp">Home</a></li>
-				<li><a href="about.jsp">About</a></li>
-				<li><a href="trainers.jsp">Trainers</a></li>
-				<li><a href="classes.jsp">Classes</a></li>
-				<li><a href="blog.jsp">Blog</a></li>
-				<li><a href="pricing.jsp">Pricing</a></li>
-				<li><a href="contact.jsp">Contact</a></li>
+				<li class="active"><a href="<%=request.getContextPath()%>/">Inicio</a></li>
+				<li><a href="eventos.jsp">Eventos</a></li>
+				<li><a href="trainers.jsp">Horarios</a></li>
+				<li><a href="pricing.jsp">Preços</a></li>
 			</ul>
 			<script type="text/javascript"
 				src="<%=request.getContextPath()%>/assets/js/nav.js"></script>
