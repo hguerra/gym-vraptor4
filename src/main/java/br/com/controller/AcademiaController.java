@@ -2,7 +2,12 @@ package br.com.controller;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.Validator;
+import br.com.dao.AlunoDao;
 import br.com.model.bean.Aluno;
 import br.com.model.bean.Atividade;
 import br.com.model.bean.Conta;
@@ -12,14 +17,14 @@ import br.com.model.bean.Treino;
 
 @Controller
 public class AcademiaController {
-//	@Inject
-//	private Result result;
-//	
-//	@Inject
-//	private Validator validator;
-//	
-//	@Inject
-//	private AlunoDao dao;
+	@Inject
+	private Result result;
+	
+	@Inject
+	private Validator validator;
+	
+	@Inject
+	private AlunoDao dao;
 
 	public void cadastrarAluno(Aluno aluno) {
 
