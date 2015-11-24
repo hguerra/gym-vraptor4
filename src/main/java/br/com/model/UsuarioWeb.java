@@ -1,13 +1,16 @@
 package br.com.model;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import br.com.model.bean.Usuario;
 
+@SuppressWarnings("serial")
 @SessionScoped
 @Named("usuario")
-public class UsuarioWeb {
+public class UsuarioWeb implements Serializable{
 	private Usuario logado;
 
 	public void login(Usuario usuario) {
