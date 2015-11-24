@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!--c:\xampp\mysql\bin\mysql.exe -u root -->
+		<!-- /opt/lampp/bin/mysql -u root -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/gym</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- desempenho hibernate -->
+		<property name="hibernate.c3p0.maxPoolSize">5000</property>
+		<property name="hibernate.c3p0.minPoolSize">5</property>
+		<property name="hibernate.c3p0.initialPoolSize">10</property>
+
+		<property name="hibernate.c3p0.maxStatements">1000</property>
+		<property name="hibernate.c3p0.maxStatementsPerConnection">20</property>
+
+		<property name="hibernate.c3p0.numHelperThreads">200</property>
+		<property name="hibernate.c3p0.maxConnectionAge">1440</property>
+		<property name="hibernate.c3p0.maxIdleTimeExcessConnections">30</property>
+		<property name="hibernate.c3p0.maxIdleTime">7200</property>
+		<property name="hibernate.c3p0.idleConnectionTestPeriod">60</property>
+		<property name="hibernate.c3p0.acquireIncrement">5</property>
+
+		<property name="hibernate.bytecode.use_reflection_optimizer">true</property>
+		<!-- Mapping -->
+		<mapping class="br.com.model.bean.Usuario" />
+	</session-factory>
+</hibernate-configuration>

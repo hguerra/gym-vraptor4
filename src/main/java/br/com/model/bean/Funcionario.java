@@ -3,18 +3,17 @@ package br.com.model.bean;
 import java.time.LocalDate;
 import java.time.MonthDay;
 
+@SuppressWarnings("serial")
 public class Funcionario extends Usuario {
-	private Email email;
 	private LocalDate dataContratacao;
 	private MonthDay dataPagamento;
 	private Double salario;
 
 	public Funcionario(String nome, String sobreNome, Endereco endereco,
-			Email email, MonthDay dataPagamento, Double salario) {
+			MonthDay dataPagamento, Double salario) {
 		setNome(nome);
 		setSobreNome(sobreNome);
 		setEndereco(endereco);
-		this.email = email;
 		this.dataContratacao = LocalDate.now();
 		this.dataPagamento = dataPagamento;
 		this.salario = salario;
@@ -26,14 +25,6 @@ public class Funcionario extends Usuario {
 
 	public LocalDate getDataContratacao() {
 		return dataContratacao;
-	}
-
-	public Email getEmail() {
-		return email;
-	}
-
-	public void setEmail(Email email) {
-		this.email = email;
 	}
 
 	public MonthDay getDataPagamento() {

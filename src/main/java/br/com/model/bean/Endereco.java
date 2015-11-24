@@ -1,10 +1,32 @@
 package br.com.model.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ENDERECO")
 public class Endereco {
+	@Id()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+	@Column(name = "ENDERECO_RUA")
 	private String rua;
+	
+	@Column(name = "ENDERECO_NUMERO")
 	private int numero;
+	
+	@Column(name = "ENDERECO_BAIRRO")
 	private String bairro;
+	
+	@Column(name = "ENDERECO_CIDADE")
 	private String cidade;
+	
+	@Column(name = "ENDERECO_PAIS")
 	private String pais;
 
 	public String getRua() {
@@ -45,6 +67,14 @@ public class Endereco {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

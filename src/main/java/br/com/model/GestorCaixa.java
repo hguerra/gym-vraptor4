@@ -3,6 +3,7 @@ package br.com.model;
 import br.com.model.bean.Caixa;
 import br.com.model.bean.Historico;
 import br.com.model.bean.Transacao;
+import br.com.validator.Validator;
 
 
 public class GestorCaixa implements Gestor{
