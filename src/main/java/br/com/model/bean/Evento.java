@@ -1,26 +1,37 @@
 package br.com.model.bean;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class Evento {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "EVENTO")
+public class Evento implements Serializable{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(nullable = false)
 	private String nome;
+
+	@Column(nullable = false)
 	private String descricao;
+
+	@Column(nullable = false)
 	private LocalDateTime data;
 
-	public Evento(String nome, String descricao, int hora, int min, int dia,
-			int mes, int ano) {
-		this.nome = nome;
-		this.descricao = descricao;
-		this.data = LocalDateTime.of(ano, mes, dia, hora, min);
-		data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm"));
+	public long getId() {
+		return id;
 	}
 
-	public Evento(String nome, String descricao) {
-		this.nome = nome;
-		this.descricao = descricao;
-		this.data = LocalDateTime.now();
-		data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm"));
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNome() {

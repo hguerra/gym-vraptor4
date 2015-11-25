@@ -57,4 +57,18 @@ public class UsuarioController {
 		usuarioWeb.logout();
 		result.redirectTo(IndexController.class).index();
 	}
+	
+	@Get("/perfil")
+	public void perfil(){
+		
+	}
+	
+	@Get("/atividades")
+	public void atividades(){
+		
+	}
+	@Get("/lembretes")
+	public void lembretes(){
+		
+	}
 }

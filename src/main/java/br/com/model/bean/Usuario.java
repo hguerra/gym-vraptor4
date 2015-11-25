@@ -2,6 +2,8 @@ package br.com.model.bean;
 
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -40,6 +43,65 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "USUARIO_ENDERECO")
 	private Endereco endereco;
+
+	@Column(name = "USUARIO_TIPO", nullable = false)
+	private boolean aluno = true;
+
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idTreino")
+	private Set<Treino> treino = new HashSet<Treino>();
+
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idStatus")
+	private Set<Status> status = new HashSet<Status>();
+
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idLembretes")
+	private Set<Lembrete> lembretes = new HashSet<Lembrete>();
+
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idAtividades")
+	private Set<Atividade> atividades = new HashSet<Atividade>();
+
+	public boolean isAluno() {
+		return aluno;
+	}
+
+	public void setAluno(boolean aluno) {
+		this.aluno = aluno;
+	}
+
+	public Set<Treino> getTreino() {
+		return treino;
+	}
+
+	public void setTreino(Set<Treino> treino) {
+		this.treino = treino;
+	}
+
+	public Set<Status> getStatus() {
+		return status;
+	}
+
+	public void setStatus(Set<Status> status) {
+		this.status = status;
+	}
+
+	public Set<Lembrete> getLembretes() {
+		return lembretes;
+	}
+
+	public void setLembretes(Set<Lembrete> lembretes) {
+		this.lembretes = lembretes;
+	}
+
+	public Set<Atividade> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(Set<Atividade> atividades) {
+		this.atividades = atividades;
+	}
 
 	public String getNome() {
 		return nome;

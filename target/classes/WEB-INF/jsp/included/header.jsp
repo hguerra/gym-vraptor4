@@ -1,15 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!-- start header_top -->
 <div class="header">
 	<div class="container">
 		<div class="header-text">
 			<h1>Perfect Fitness</h1>
-			<br>
-			<br>
+			<br> <br>
 			<div class="banner_btn">
-				<a href="login.jsp">Entrar</a>
+				<a href="<c:url value="/login"/>">Entrar</a>
 			</div>
 		</div>
 		<div class="header-arrow">
@@ -25,17 +24,26 @@
 	informacoes 
 	do usuario--%>
 		<div class="header-bottom_left">
-			<i class="phone"> </i><span>1-200-346-2986</span>
+			<c:if test="${usuario.logado}">
+				<span style="color: #fff;"><p>Seja bem vindo, ${usuario.nome}.</p></span>
+			</c:if>
 		</div>
 		<div class="social">
-			<ul>
-				<li class="facebook"><a href="#"><span> </span></a></li>
-				<li class="twitter"><a href="#"><span> </span></a></li>
-				<li class="pinterest"><a href="#"><span> </span></a></li>
-				<li class="google"><a href="#"><span> </span></a></li>
-				<li class="tumblr"><a href="#"><span> </span></a></li>
-				<li class="instagram"><a href="#"><span> </span></a></li>
-				<li class="rss"><a href="#"><span> </span></a></li>
+			<ul> 
+			<c:if test="${usuario.logado}">
+				<c:if test="${not usuario.aluno}">
+					<li><a href="<c:url value="/adm"/>"><i class = "glyphicon glyphicon-plus" style="color: #fff;"></i></a></li>
+				</c:if>
+				<li><a href="<c:url value="/lembretes"/>"><i class = "glyphicon glyphicon-bell" style="color: #fff;"></i></a></li>
+				<li><a href="<c:url value="/atividades"/>"><i class = "glyphicon glyphicon-list-alt" style="color: #fff;"></i></a></li>
+				<li><a href="<c:url value="/perfil"/>"><i class="glyphicon glyphicon-user" style="color: #fff;"> </i></a></li>
+				<li><a href="<c:url value="/logout"/>"><i class = "glyphicon glyphicon-log-out" style="color: #fff;"></i></a></li>
+			</c:if>
+				
+				<c:if test="${empty usuario or not usuario.logado}">
+					<li><a href="<c:url value="/login"/>"><i class="glyphicon glyphicon-log-in"  style="color: #fff;"> Login </i></a></li>
+					<li><a href="<c:url value="/register"/>"><i class = "glyphicon glyphicon-plus-sign"  style="color: #fff;"> Cadastre-se</i></a></li>
+				</c:if>
 			</ul>
 		</div>
 		<div class="clear"></div>
@@ -48,7 +56,7 @@
 <div class="menu" id="menu">
 	<div class="container">
 		<div class="logo">
-			<a href="index.jsp"><img
+			<a href="<c:url value="/"/>"><img
 				src="<%=request.getContextPath()%>/assets/images/logo.png" alt="" /></a>
 		</div>
 		<div class="h_menu4">
@@ -56,9 +64,9 @@
 			<a class="toggleMenu" href="#">Menu</a>
 			<ul class="nav">
 				<li class="active"><a href="<%=request.getContextPath()%>/">Inicio</a></li>
-				<li><a href="eventos.jsp">Eventos</a></li>
-				<li><a href="trainers.jsp">Horarios</a></li>
-				<li><a href="pricing.jsp">Preços</a></li>
+				<li><a href="<c:url value='/eventos'/>">Eventos</a></li>
+				<li><a href="<c:url value='/trainers'/>">Horarios</a></li>
+				<li><a href="<c:url value='/pricing'/>">Preços</a></li>
 			</ul>
 			<script type="text/javascript"
 				src="<%=request.getContextPath()%>/assets/js/nav.js"></script>

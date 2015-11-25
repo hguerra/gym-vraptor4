@@ -5,76 +5,121 @@ import java.util.List;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.dao.AlunoDao;
-import br.com.model.bean.Aluno;
+import br.com.dao.UsuarioDao;
+import br.com.interceptor.Restrito;
+import br.com.model.UsuarioWeb;
 import br.com.model.bean.Atividade;
-import br.com.model.bean.Conta;
 import br.com.model.bean.Evento;
 import br.com.model.bean.Lembrete;
+import br.com.model.bean.Transacao;
 import br.com.model.bean.Treino;
+import br.com.model.bean.Usuario;
 
 @Controller
 public class AcademiaController {
 	@Inject
 	private Result result;
-	
+
 	@Inject
 	private Validator validator;
+
+	@Inject
+	private UsuarioDao dao;
 	
 	@Inject
-	private AlunoDao dao;
+	private UsuarioWeb user;
 
-	public void cadastrarAluno(Aluno aluno) {
+	@Get("/adm")
+	public void painelAdm() {
 
 	}
-
-	// id aluno, treino
+	
+	@Restrito
+	@Post("/addExercicio/{usuario.id}")
 	public void cadastrarTreino(long id, Treino treino) {
-		// Aluno aluno = dao.search(id);
+		System.out.println(id);
+		System.out.println(treino);
 
 	}
-
-	public void removerAluno(long id) {
-
-	}
-
+	
+	@Restrito
+	@Post("/removeExercicio")
 	public void removerTreino(long id) {
-
 	}
 
-	public void editarTreino(Treino treino) {
-
+	@Restrito
+	@Get("/buscar")
+	public List<Usuario> buscarAluno(Usuario usuario) {
+		validator.addIf(usuario == null, new SimpleMessage("usuario.nome","Nome nao pode ser nulo"));
+		validator.onErrorUsePageOf(this).painelAdm();
+		List<Usuario> usuarios = dao.searchFilter(usuario);
+		return usuarios;
 	}
 
-	// nessa jsp colocar o cadastrar treino, remover
-	public Aluno buscarAluno(Aluno aluno) {
-		return null;
+	@Restrito
+	@Get("/buscarTodosAlunos")
+	public List<Usuario> buscarTodosAlunos() {
+		return dao.getAll(Usuario.class);
+	}
+	
+	@Restrito
+	@Get("/buscarTodosDevedores")
+	public List<Usuario> buscarTodosDevedores() {
+		return dao.buscaTodosAlunoQueDevemDinheiro();
 	}
 
-	// chamar evento de emails aqui
-	public List<Aluno> buscarTodosAlunos() {
-		return null;
-	}
-
-	public List<Aluno> buscarTodosDevedores() {
-		return null;
-	}
-
-	public void cadastrarConta(Conta conta) {
+	@Restrito
+	@Post("/cadastrarConta")
+	public void cadastrarConta(Transacao transacao) {
 
 	}
-
+	@Restrito
+	@Post("/cadastrarEvento")
 	public void cadastrarEventos(Evento evento) {
 
 	}
-
+	@Restrito
+	@Post("/cadastrarAtividade")
 	public void cadastrarAtividade(Atividade atividade) {
 
 	}
-
+	@Post("/cadastrarLembrete")
 	public void cadastrarLembrete(Lembrete lembrete) {
 
 	}
+	@Restrito
+	@Post("/removerEvento/{evento.id}")
+	public void removerEventos(long id) {
+
+	}
+	@Restrito
+	@Post("/removerAtividade/{atividade.id}")
+	public void removerAtividade(long id) {
+
+	}
+	@Restrito
+	@Post("/removerLembrete/{lembrete.id}")
+	public void removerLembrete(long id) {
+
+	}
+	
+	@Restrito
+	public List<Lembrete> listarLembretes(long id) {
+		return dao.buscarLembretes(user.getUsuario());
+	}
+	
+	@Restrito
+	public List<Atividade> listarAtividades(long id) {
+		return dao.buscarAtividades(user.getUsuario());
+	}
+	
+	
+	
+
+
 }

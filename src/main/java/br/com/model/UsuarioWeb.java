@@ -10,7 +10,7 @@ import br.com.model.bean.Usuario;
 @SuppressWarnings("serial")
 @SessionScoped
 @Named("usuario")
-public class UsuarioWeb implements Serializable{
+public class UsuarioWeb implements Serializable {
 	private Usuario logado;
 
 	public void login(Usuario usuario) {
@@ -21,7 +21,7 @@ public class UsuarioWeb implements Serializable{
 		return logado.getNome();
 	}
 
-	public boolean isOnline() {
+	public boolean isLogado() {
 		return logado != null;
 	}
 
@@ -33,13 +33,12 @@ public class UsuarioWeb implements Serializable{
 		return logado;
 	}
 
-	public String generateNewPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public String getEmail() {
-		return null;
+		return logado.getEmail();
+	}
+	
+	public boolean isAluno(){
+		return logado.isAluno();
 	}
 
 }

@@ -1,10 +1,14 @@
 package br.com.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
+import br.com.model.bean.Evento;
 
 @Controller
 public class IndexController {
@@ -25,30 +29,23 @@ public class IndexController {
 
 	@Path("/")
 	public void index() {
+	
 	}
 
-	@Path("/eventos.jsp")
-	public void eventos() {
+	@Get("/eventos")
+	public List<Evento> eventos() {
+		return null;
 	}
 	
 	
-	@Path("/pricing.jsp")
+	@Path("/pricing")
 	public void pricing() {
 	}
 	
 	
-	@Path("/trainers.jsp")
+	@Path("/trainers")
 	public void trainers() {
 	}
-	
-	@Path("/login.jsp")
-	public void login(){
-		//result.forwardTo(UsuarioController.class).login();
-	}
-	
-	@Path("/register.jsp")
-	public void register(){
-		//result.forwardTo(UsuarioController.class).register();
-	}
+
 	
 }

@@ -41,156 +41,37 @@
 			<div class="about_trainer">
 				<h3 class="m_2">Programação</h3>
 				<div class="row about_box">
-					<div class="col-md-4">
-						<div class="box1">
-							<div class="box1_left">
-								<img
-									src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
-									class="img-responsive" alt="" />
-								<div class="desc1">
-									<h3>
-										Nome Evento<br>
-									</h3>
-									<br>
-									<p>
-										<i class="glyphicon glyphicon-time"></i> Data
-									</p>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="box1_right">
-								<h4>Descrição</h4>
-								<p>texto</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box2">
-							<div class="box1_left">
-								<img
-									src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
-									class="img-responsive" alt="" />
-								<div class="desc2">
-									<h3>
-										Nome Evento<br>
-									</h3>
-									<br>
-									<p>
-										<i class="glyphicon glyphicon-time"></i> Data
-									</p>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="box1_right">
-								<h4 class="right_text">Descrição</h4>
-								<p class="right_text1">texto</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box1">
-							<div class="box1_left">
-								<img
-									src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
-									class="img-responsive" alt="" />
-								<div class="desc1">
-									<h3>
-										Nome Evento<br>
-									</h3>
-									<br>
-									<p>
-										<i class="glyphicon glyphicon-time"></i> Data
-									</p>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="box1_right">
-								<h4>Descrição</h4>
-								<p>texto</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="row about_box1">
-					<div class="col-md-4">
-						<div class="box2">
-							<div class="box1_left">
-								<img
-									src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
-									class="img-responsive" alt="" />
-								<div class="desc2">
-									<h3>
-										Nome Evento<br>
-									</h3>
-									<br>
-									<p>
-										<i class="glyphicon glyphicon-time"></i> Data
-									</p>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="box1_right">
-								<h4 class="right_text">Descrição</h4>
-								<p class="right_text1">texto</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box1">
-							<div class="box1_left">
-								<img
-									src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
-									class="img-responsive" alt="" />
-								<div class="desc1">
-									<h3>
-										Nome Evento<br>
-									</h3>
-									<br>
-									<p>
-										<i class="glyphicon glyphicon-time"></i> Data
-									</p>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="box1_right">
-								<h4>Descrição</h4>
-								<p>texto</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box2">
-							<div class="box1_left">
-								<img
-									src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
-									class="img-responsive" alt="" />
-								<div class="desc2">
-									<h3>
-										Nome Evento<br>
-									</h3>
-									<br>
-									<p>
-										<i class="glyphicon glyphicon-time"></i> Data
-									</p>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="box1_right">
-								<h4 class="right_text">Descrição</h4>
-								<p class="right_text1">texto</p>
 
+					<c:forEach items="${eventoList}" var="evento">
+
+						<div class="col-md-4">
+							<div class="box1">
+								<div class="box1_left">
+									<img
+										src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
+										class="img-responsive" alt="" />
+									<div class="desc1">
+										<h3>${evento.nome}<br>
+										</h3>
+										<br>
+										<p>
+											<i class="glyphicon glyphicon-time"></i>${evento.data}
+										</p>
+										<div class="clear"></div>
+									</div>
+								</div>
+								<div class="box1_right">
+									<h4>Descrição</h4>
+									<p>${evento.descricao}</p>
+								</div>
+								<div class="clear"></div>
 							</div>
-							<div class="clear"></div>
 						</div>
-					</div>
-					<div class="clear"></div>
+						<div class="clear"></div>
+
+					</c:forEach>
 				</div>
+				<!-- /linha 1 -->
 			</div>
 		</div>
 	</div>

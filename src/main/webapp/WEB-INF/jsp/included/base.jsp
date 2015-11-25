@@ -9,6 +9,8 @@
 <body>
 <jsp:include page="../included/header.jsp"></jsp:include>
 <!-- inicio -->
+<div class="main">
+</div>
 <!-- fim -->
 <jsp:include page="../included/footer.jsp"></jsp:include>
 </body>

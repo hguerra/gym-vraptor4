@@ -15,12 +15,12 @@
 				class="img-responsive" alt="" />
 		</div>
 		<div class="about_banner_wrap">
-			<h1 class="m_11">Pricing</h1>
+			<h1 class="m_11">Preços</h1>
 		</div>
 		<div class="border"></div>
 		<div class="container">
 			<div class="row price_plans">
-				<h3 class="m_2">Pricing and plans</h3>
+				<h3 class="m_2">Planos</h3>
 				<div class="price_plans_box">
 					<div class="col-md-4">
 						<ul class="price1">
@@ -29,7 +29,7 @@
 								R$50<small>.50</small>
 							</h2>
 							<ul class="price_list">
-								<a class="popup-with-zoom-anim" href="#small-dialog"><li
+								<a class="popup-with-zoom-anim" href="<c:url value="/register"/>"><li
 									class="price_but">Assine já</li></a>
 								<div class="clear"></div>
 							</ul>
@@ -42,8 +42,8 @@
 								R$135<small>.00</small>
 							</h2>
 							<ul class="price_list1">
-								<a class="popup-with-zoom-anim" href="#small-dialog"><li
-									class="price_but1">Buy Now</li></a>
+								<a class="popup-with-zoom-anim" href="<c:url value="/register"/>"><li
+									class="price_but1">Assine já</li></a>
 								<div class="clear"></div>
 							</ul>
 						</ul>
@@ -55,8 +55,8 @@
 								R$510<small>.00</small>
 							</h2>
 							<ul class="price_list">
-								<a class="popup-with-zoom-anim" href="#small-dialog"><li
-									class="price_but">Buy Now</li></a>
+								<a class="popup-with-zoom-anim" href="<c:url value="/register"/>"><li
+									class="price_but">Assine já</li></a>
 								<div class="clear"></div>
 							</ul>
 						</ul>

@@ -14,4 +14,6 @@ public interface Dao<T> {
 	T search(Serializable id, Class<?> clazz);
 
 	List<T> getAll(Class<?> clazz);
+	
+	List<T> searchFilter(Object filter);
 }

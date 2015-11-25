@@ -16,7 +16,7 @@
 				 <div class="login-page">
 					<h4 class="title">Novo Cliente?</h4>
 					<div class="button1">
-					   <a href="register.jsp"><input type="submit" name="Submit" value="Criar conta"></a>
+					   <a href="<c:url value="/register"/>"><input type="submit" name="Submit" value="Criar conta"></a>
 					 </div>
 					 <div class="clear"></div>
 				  </div>
@@ -26,20 +26,20 @@
 				  <div class="login-title">
 	           		<h4 class="title">Clientes Registrados</h4>
 					<div id="loginbox" class="loginbox">
-						<form action="" method="post" name="login-form" id="login-form">
+						<form action="login" method="post" id="login-form">
 						  <fieldset class="input">
 						    <p id="login-form-username">
 						      <label for="modlgn_username">Email</label>
-						      <input id="modlgn_username" type="text" name="email" id = "email"class="inputbox" size="18" autocomplete="off">
+						      <input id="modlgn_username" type="text" name="usuario.email" id = "email"class="inputbox" size="18" autocomplete="off">
 						    </p>
 						    <p id="login-form-password">
 						      <label for="modlgn_passwd">Password</label>
-						      <input id="modlgn_passwd" type="password" id = "password" name="password" class="inputbox" size="18" autocomplete="off">
+						      <input id="modlgn_passwd" type="password" id = "password" name="usuario.senha" class="inputbox" size="18">
 						    </p>
 						    <div class="remember">
-							    <p id="login-form-remember">
-							      <label for="modlgn_remember"><a href="#">Forget Your Password ? </a></label>
-							   </p>
+<!-- 							    <p id="login-form-remember"> -->
+<!-- 							      <label for="modlgn_remember"><a href="#">Forget Your Password ? </a></label> -->
+<!-- 							   </p> -->
 							    <input type="submit" name="Submit" class="button" value="Login"><div class="clear"></div>
 							 </div>
 						  </fieldset>

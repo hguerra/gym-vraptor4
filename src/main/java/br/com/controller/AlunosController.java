@@ -3,40 +3,24 @@ package br.com.controller;
 import java.util.List;
 
 import br.com.caelum.vraptor.Controller;
-import br.com.model.bean.Atividade;
-import br.com.model.bean.Conta;
-import br.com.model.bean.Lembrete;
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Post;
 import br.com.model.bean.Status;
+import br.com.model.bean.Transacao;
 import br.com.model.bean.Treino;
 @Controller
 public class AlunosController {
-	
+	@Get("/visualizarTreino")
 	public List<Treino> visualizarTreino() {
 		return null;
 	}
-
-	public void criarLembrete(Lembrete lembrete) {
-
-	}
-
-	public void removerLembrete(long id) {
-
-	}
-
-	public void cadastrarAtividade(Atividade atividade) {
-
-	}
-
-	public void removerAtividade(long id) {
-
-	}
 	
-	//nessa jsp colocar o efetuar pagamento
-	public List<Status> visulizarStatus() {
+	@Get("/visualizarStatus")
+	public List<Status> visualizarStatus() {
 		return null;
 	}
-
-	public void efetuarPagamento(Conta conta) {
+	@Post("/pagamento")
+	public void efetuarPagamento(Transacao transacao) {
 		
 	}
 

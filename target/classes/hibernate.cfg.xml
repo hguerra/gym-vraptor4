@@ -34,5 +34,12 @@
 		
 		<mapping class="br.com.model.bean.Usuario" />
 		<mapping class="br.com.model.bean.Endereco" />
+		<mapping class="br.com.model.bean.Atividade" />
+		<mapping class="br.com.model.bean.Evento" />
+		<mapping class="br.com.model.bean.Historico" />
+		<mapping class="br.com.model.bean.Lembrete" />
+		<mapping class="br.com.model.bean.Status" />
+		<mapping class="br.com.model.bean.Transacao" />
+		<mapping class="br.com.model.bean.Treino" />
 	</session-factory>
 </hibernate-configuration>

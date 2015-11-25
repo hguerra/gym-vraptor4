@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Example;
 
 public class GenericHibernateDao<T> implements Dao<T> {
 
@@ -98,6 +99,29 @@ public class GenericHibernateDao<T> implements Dao<T> {
 		session.close();
 
 		return (T) object;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchFilter(Object filter) {
+		session = HibernateControl.getSession();
+
+		session.beginTransaction();
+
+		List<Object> objects = null;
+		try {
+			objects = session.createCriteria(filter.getClass()).add(Example.create(filter)).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		session.getTransaction().commit();
+
+		session.flush();
+
+		session.close();
+
+		return (List<T>) objects;
 	}
 
 }
