@@ -9,18 +9,17 @@ import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.controller.UsuarioController;
-import br.com.model.UsuarioWeb;
 
 @Intercepts
 public class AutorizacaoInterceptor implements Interceptor {
 	@Inject
-	private UsuarioWeb usuario;
+	private UsuarioInfo usuario;
 	@Inject
 	private Result result;
 
 	@Override
 	public boolean accepts(ControllerMethod method) {
-		return !usuario.isLogado() && method.containsAnnotation(Restrito.class);
+		return !usuario.isLogado() && method.containsAnnotation(Private.class);
 	}
 
 	@Override

@@ -15,5 +15,5 @@ public interface Dao<T> {
 
 	List<T> getAll(Class<?> clazz);
 	
-	List<T> searchFilter(Object filter);
+	List<T> searchFilter(T filter);
 }

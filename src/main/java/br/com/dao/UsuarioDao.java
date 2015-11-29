@@ -1,95 +1,22 @@
 package br.com.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import org.hibernate.criterion.Restrictions;
-
-import br.com.dao.detailed.UsuarioHibernateDao;
-import br.com.infra.GenericHibernateDao;
-import br.com.infra.HibernateControl;
 import br.com.model.bean.Atividade;
 import br.com.model.bean.Lembrete;
-import br.com.model.bean.Status;
 import br.com.model.bean.Usuario;
 
-public class UsuarioDao extends GenericHibernateDao<Usuario> implements
-		UsuarioHibernateDao {
+public interface UsuarioDao {
 
-	@Override
-	public boolean verificaUsuarioLogin(Usuario usuario) {
-		session = HibernateControl.getSession();
+	public boolean verificaUsuarioLogin(Usuario usuario);
 
-		session.beginTransaction();
-
-		Usuario encontrado = (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.eq("email", usuario.getEmail()))
-				.uniqueResult();
-
-		session.getTransaction().commit();
-
-		session.flush();
-
-		session.close();
-
-		return encontrado != null;
-	}
-
-	public Usuario carrega(Usuario usuario) {
-		session = HibernateControl.getSession();
-
-		session.beginTransaction();
-
-		Usuario carregado = (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.eq("email", usuario.getEmail()))
-				.add(Restrictions.eq("senha", usuario.getSenha()))
-				.uniqueResult();
-
-		session.getTransaction().commit();
-
-		session.flush();
-
-		session.close();
-
-		return carregado;
-	}
-
-	@Override
-	public List<Usuario> buscaTodosAlunoQueDevemDinheiro() {
-		Usuario filter = new Usuario();
-		filter.setAluno(true);
-		Set<Status> status = filter.getStatus().stream().filter(p -> !p.isPago()).collect(Collectors.toSet());
-		filter.setStatus(status);
-		List<Usuario> usuarios = searchFilter(filter);
-		return usuarios;
-	}
-
-	@Override
-	public List<Usuario> buscaTodosAlunosEmDia() {
-		Usuario filter = new Usuario();
-		filter.setAluno(true);
-		Set<Status> status = filter.getStatus().stream().filter(p -> p.isPago()).collect(Collectors.toSet());
-		filter.setStatus(status);
-		List<Usuario> usuarios = searchFilter(filter);
-		return usuarios;
-	}
-
-	@Override
-	public List<Lembrete> buscarLembretes(Usuario filter) {
-		Usuario user = search(filter.getId(), Usuario.class);
-		List<Lembrete> lembretes = new ArrayList<Lembrete>(user.getLembretes());
-		return lembretes;
-	}
-
-	@Override
-	public List<Atividade> buscarAtividades(Usuario filter) {
-		Usuario user = search(filter.getId(), Usuario.class);
-		List<Atividade> atividades = new ArrayList<Atividade>(user.getAtividades());
-		return atividades;
-	}
+	public Usuario carrega(Usuario usuario);
 	
+	List<Usuario> buscaTodosAlunoQueDevemDinheiro();
 	
-
+	List<Usuario> buscaTodosAlunosEmDia();
+	
+	List<Lembrete> buscarLembretes(Usuario filter);
+	
+	List<Atividade> buscarAtividades(Usuario filter);
 }

@@ -10,9 +10,9 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.dao.UsuarioDao;
-import br.com.interceptor.Restrito;
-import br.com.model.UsuarioWeb;
+import br.com.dao.DefaultUsuarioDao;
+import br.com.interceptor.Private;
+import br.com.interceptor.UsuarioInfo;
 import br.com.model.bean.Atividade;
 import br.com.model.bean.Evento;
 import br.com.model.bean.Lembrete;
@@ -22,24 +22,33 @@ import br.com.model.bean.Usuario;
 
 @Controller
 public class AcademiaController {
-	@Inject
-	private Result result;
-
-	@Inject
-	private Validator validator;
-
-	@Inject
-	private UsuarioDao dao;
+	private final Result result;
+	private final Validator validator;
+	private final DefaultUsuarioDao dao;
+	private final UsuarioInfo user;
+	
+	/**
+	 * @deprecated
+	 */
+	protected AcademiaController() {
+		this(null, null, null, null);
+	}
 	
 	@Inject
-	private UsuarioWeb user;
+	public AcademiaController(Result result, Validator validator,
+			DefaultUsuarioDao dao, UsuarioInfo user) {
+		this.result = result;
+		this.validator = validator;
+		this.dao = dao;
+		this.user = user;
+	}
 
 	@Get("/adm")
 	public void painelAdm() {
 
 	}
 	
-	@Restrito
+	@Private
 	@Post("/addExercicio/{usuario.id}")
 	public void cadastrarTreino(long id, Treino treino) {
 		System.out.println(id);
@@ -47,12 +56,12 @@ public class AcademiaController {
 
 	}
 	
-	@Restrito
+	@Private
 	@Post("/removeExercicio")
 	public void removerTreino(long id) {
 	}
 
-	@Restrito
+	@Private
 	@Get("/buscar")
 	public List<Usuario> buscarAluno(Usuario usuario) {
 		validator.addIf(usuario == null, new SimpleMessage("usuario.nome","Nome nao pode ser nulo"));
@@ -61,29 +70,29 @@ public class AcademiaController {
 		return usuarios;
 	}
 
-	@Restrito
+	@Private
 	@Get("/buscarTodosAlunos")
 	public List<Usuario> buscarTodosAlunos() {
 		return dao.getAll(Usuario.class);
 	}
 	
-	@Restrito
+	@Private
 	@Get("/buscarTodosDevedores")
 	public List<Usuario> buscarTodosDevedores() {
 		return dao.buscaTodosAlunoQueDevemDinheiro();
 	}
 
-	@Restrito
+	@Private
 	@Post("/cadastrarConta")
 	public void cadastrarConta(Transacao transacao) {
 
 	}
-	@Restrito
+	@Private
 	@Post("/cadastrarEvento")
 	public void cadastrarEventos(Evento evento) {
 
 	}
-	@Restrito
+	@Private
 	@Post("/cadastrarAtividade")
 	public void cadastrarAtividade(Atividade atividade) {
 
@@ -92,28 +101,28 @@ public class AcademiaController {
 	public void cadastrarLembrete(Lembrete lembrete) {
 
 	}
-	@Restrito
+	@Private
 	@Post("/removerEvento/{evento.id}")
 	public void removerEventos(long id) {
 
 	}
-	@Restrito
+	@Private
 	@Post("/removerAtividade/{atividade.id}")
 	public void removerAtividade(long id) {
 
 	}
-	@Restrito
+	@Private
 	@Post("/removerLembrete/{lembrete.id}")
 	public void removerLembrete(long id) {
 
 	}
 	
-	@Restrito
+	@Private
 	public List<Lembrete> listarLembretes(long id) {
 		return dao.buscarLembretes(user.getUsuario());
 	}
 	
-	@Restrito
+	@Private
 	public List<Atividade> listarAtividades(long id) {
 		return dao.buscarAtividades(user.getUsuario());
 	}

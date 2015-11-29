@@ -9,21 +9,33 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.dao.UsuarioDao;
-import br.com.model.UsuarioWeb;
+import br.com.dao.DefaultUsuarioDao;
+import br.com.interceptor.UsuarioInfo;
 import br.com.model.bean.Usuario;
-import br.com.validator.LoginAvailable;
+import br.com.validation.LoginAvailable;
 
 @Controller
 public class UsuarioController {
+	private final Result result;
+	private final Validator validator;
+	private final DefaultUsuarioDao dao;
+	private final UsuarioInfo usuarioWeb;
+
+	/**
+	 * @deprecated
+	 */
+	protected UsuarioController() {
+		this(null, null, null, null);
+	}
+
 	@Inject
-	private Result result;
-	@Inject
-	private Validator validator;
-	@Inject
-	private UsuarioDao dao;
-	@Inject
-	private UsuarioWeb usuarioWeb;
+	public UsuarioController(Result result, Validator validator,
+			DefaultUsuarioDao dao, UsuarioInfo usuarioWeb) {
+		this.result = result;
+		this.validator = validator;
+		this.dao = dao;
+		this.usuarioWeb = usuarioWeb;
+	}
 
 	@Get("/login")
 	public void login() {
@@ -57,18 +69,19 @@ public class UsuarioController {
 		usuarioWeb.logout();
 		result.redirectTo(IndexController.class).index();
 	}
-	
+
 	@Get("/perfil")
-	public void perfil(){
-		
+	public void perfil() {
+
 	}
-	
+
 	@Get("/atividades")
-	public void atividades(){
-		
+	public void atividades() {
+
 	}
+
 	@Get("/lembretes")
-	public void lembretes(){
-		
+	public void lembretes() {
+
 	}
 }
