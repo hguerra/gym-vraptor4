@@ -8,10 +8,10 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
-import br.com.controller.IndexController;
+import br.com.controller.UsuarioController;
 
 @Intercepts
-public class AutorizacaoInterceptor implements Interceptor {
+public class LoginInterceptor implements Interceptor {
 	@Inject
 	private UsuarioInfo usuario;
 	@Inject
@@ -19,14 +19,16 @@ public class AutorizacaoInterceptor implements Interceptor {
 
 	@Override
 	public boolean accepts(ControllerMethod method) {
-		return usuario.isLogado() && usuario.getUsuario().isAluno()
-				&& method.containsAnnotation(Funcionario.class);
+		return !usuario.isLogado()
+				&& (method.containsAnnotation(Funcionario.class) || method
+						.containsAnnotation(Aluno.class));
 	}
 
 	@Override
 	public void intercept(InterceptorStack arg0, ControllerMethod arg1,
 			Object arg2) throws InterceptionException {
-		result.redirectTo(IndexController.class).index();
+		result.redirectTo(UsuarioController.class).login();
 
 	}
+
 }

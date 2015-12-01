@@ -1,7 +1,7 @@
 package br.com.model.mail;
 
-import easy.defaultInfo.DefaultEmailInfo;
 import br.com.model.engine.Aviso;
+import easy.defaultInfo.DefaultEmailInfo;
 
 public class Postman implements Runnable {
 	private final Aviso aviso;
@@ -14,12 +14,13 @@ public class Postman implements Runnable {
 
 	@Override
 	public void run() {
-		send();
+		sendAll();
 	}
 	
-	public void send(){
+	public void sendAll(){
 		CommonsEmail send = new DefaultCommonsEmail();
 		send.simpleEmail(email, aviso);
 	}
+
 
 }

@@ -33,6 +33,7 @@
 			<c:if test="${usuario.logado}">
 				<c:if test="${not usuario.aluno}">
 					<li><a href="<c:url value="/adm"/>"><i class = "glyphicon glyphicon-plus" style="color: #fff;"></i></a></li>
+					<li><a href="<c:url value="/inadimplentes"/>"><i class = "glyphicon glyphicon-usd" style="color: #fff;"></i></a></li>
 				</c:if>
 				<li><a href="<c:url value="/lembretes"/>"><i class = "glyphicon glyphicon-bell" style="color: #fff;"></i></a></li>
 				<li><a href="<c:url value="/atividades"/>"><i class = "glyphicon glyphicon-list-alt" style="color: #fff;"></i></a></li>

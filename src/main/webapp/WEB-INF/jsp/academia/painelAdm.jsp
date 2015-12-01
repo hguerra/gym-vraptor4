@@ -18,48 +18,60 @@
 						<button type="button" class="close" data-dismiss="alert"></button>
 						<h4>Buscar Aluno</h4>
 					</div>
-					<form action="buscar" class="form-inline">
+					<form action="<%=request.getContextPath()%>/buscar" class="form-inline">
 						<div class="form-group">
-
 							<label> Nome: </label> <input type="text" class="form-control"
 								id="nome" name="usuario.nome" />
 						</div>
 						<button type="submit" class="btn btn-default">Buscar</button>
 					</form>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<br> <br>
-					<div class="alert alert-dismissable alert-danger">
-
-						<button type="button" class="close" data-dismiss="alert"></button>
-						<h4>Alunos Inadimplentes</h4>
-					</div>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#id</th>
-								<th>Nome</th>
-								<th>Sobrenome</th>
-								<th>Email</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${treinoList}" var="treino">
+					<c:if test="${not empty usuarios}">
+						<table class="table table-striped">
+							<thead>
 								<tr>
-									<td>${treino.id}</td>
-									<td>${treino.nome}</td>
-									<td>${treino.sobreNome}</td>
-									<td>${treino.email}</td>
+									<th>#id</th>
+									<th>Nome</th>
+									<th>Sobrenome</th>
+									<th>Email</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${usuarios}" var="busca">
+									<tr>
+										<td>${busca.nome}</td>
+										<td>${busca.sobreNome}</td>
+										<td>${busca.email}</td>
+										<td><a href="buscar/${busca.id}"><i
+												class="glyphicon glyphicon-search"></i></a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:if>
+					<c:if test="${not empty status}">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+							
+								<c:forEach items="status" var="str">
+									<tr>
+										<td><c:out value="${status}"/></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
+					</c:if>
 				</div>
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
 	<!-- fim -->
 	<jsp:include page="../included/footer.jsp"></jsp:include>
 </body>

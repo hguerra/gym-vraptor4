@@ -2,6 +2,7 @@ package br.com.controller;
 
 import java.util.List;
 
+import easy.defaultInfo.ControllersInfo;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -21,7 +22,7 @@ public class AlunosController {
 	}
 	@Post("/pagamento")
 	public void efetuarPagamento(Transacao transacao) {
-		
+		ControllersInfo.printAccess("efetuarPagamento", transacao);
 	}
 
 }

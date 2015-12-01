@@ -19,4 +19,6 @@ public interface UsuarioDao {
 	List<Lembrete> buscarLembretes(Usuario filter);
 	
 	List<Atividade> buscarAtividades(Usuario filter);
+	
+	List<String> carregarStatus(long id);
 }

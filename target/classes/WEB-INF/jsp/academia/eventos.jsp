@@ -42,7 +42,7 @@
 				<h3 class="m_2">Programação</h3>
 				<div class="row about_box">
 
-					<c:forEach items="${eventoList}" var="evento">
+					<c:forEach items="${eventos}" var="evento">
 
 						<div class="col-md-4">
 							<div class="box1">

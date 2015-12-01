@@ -59,7 +59,8 @@ public class DefaultUsuarioDao extends HibernateDao<Usuario> implements
 	public List<Usuario> buscaTodosAlunoQueDevemDinheiro() {
 		Usuario filter = new Usuario();
 		filter.setAluno(true);
-		Set<Status> status = filter.getStatus().stream().filter(p -> !p.isPago()).collect(Collectors.toSet());
+		Set<Status> status = filter.getStatus().stream()
+				.filter(p -> !p.isPago()).collect(Collectors.toSet());
 		filter.setStatus(status);
 		List<Usuario> usuarios = searchFilter(filter);
 		return usuarios;
@@ -69,7 +70,8 @@ public class DefaultUsuarioDao extends HibernateDao<Usuario> implements
 	public List<Usuario> buscaTodosAlunosEmDia() {
 		Usuario filter = new Usuario();
 		filter.setAluno(true);
-		Set<Status> status = filter.getStatus().stream().filter(p -> p.isPago()).collect(Collectors.toSet());
+		Set<Status> status = filter.getStatus().stream()
+				.filter(p -> p.isPago()).collect(Collectors.toSet());
 		filter.setStatus(status);
 		List<Usuario> usuarios = searchFilter(filter);
 		return usuarios;
@@ -85,10 +87,27 @@ public class DefaultUsuarioDao extends HibernateDao<Usuario> implements
 	@Override
 	public List<Atividade> buscarAtividades(Usuario filter) {
 		Usuario user = search(filter.getId(), Usuario.class);
-		List<Atividade> atividades = new ArrayList<Atividade>(user.getAtividades());
+		List<Atividade> atividades = new ArrayList<Atividade>(
+				user.getAtividades());
 		return atividades;
 	}
-	
-	
+
+	@Override
+	public List<String> carregarStatus(long id) {
+		Usuario usuario = search(id, Usuario.class);
+		if (usuario != null) {
+			List<String> status = usuario.getStatus().stream().map(s -> {
+				StringBuffer str = new StringBuffer();
+				str.append(s.getMonth().toString());
+				if (s.isPago())
+					str.append("-> PAGO");
+				else
+					str.append("-> Não PAGO");
+				return str.toString();
+			}).collect(Collectors.toList());
+			return status;
+		}
+		return null;
+	}
 
 }
