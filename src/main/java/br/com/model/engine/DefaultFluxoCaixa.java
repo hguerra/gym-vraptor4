@@ -37,12 +37,8 @@ public class DefaultFluxoCaixa implements FluxoCaixa {
 	public Double getSaldo() {
 		return historico.getSaldo();
 	}
-
-	/**
-	 * default metodos
-	 */
-
-	private void registraTransacao(Double saldo, Transacao transacao) {
+	
+	public void registraTransacao(Double saldo, Transacao transacao) {
 		historico.addTransacao(new Transacao(transacao.getValor(), transacao
 				.getOperacao()));
 		historico.setSaldo(saldo);

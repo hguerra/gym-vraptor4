@@ -1,13 +1,36 @@
 package br.com.model.engine;
 
-import java.io.Serializable;
-
-@SuppressWarnings("serial")
-public class Aviso implements Serializable {
+public class Aviso {
 	private String emailDestinatario;
-
 	private String titulo;
 	private String mensagem;
+	private String image;
+	private String emailAttachment;
+	private String htmlEmail;
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getEmailAttachment() {
+		return emailAttachment;
+	}
+
+	public void setEmailAttachment(String emailAttachment) {
+		this.emailAttachment = emailAttachment;
+	}
+
+	public String getHtmlEmail() {
+		return htmlEmail;
+	}
+
+	public void setHtmlEmail(String htmlEmail) {
+		this.htmlEmail = htmlEmail;
+	}
 
 	public String getTitulo() {
 		return titulo;

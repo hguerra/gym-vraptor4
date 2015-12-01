@@ -13,27 +13,98 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class Util {
-	// Validator
+	/**
+	 * Validator Academia
+	 */
+	public static final Validator<LocalDate> dayOfMonth = c -> c
+			.getDayOfMonth() == 5;
+
+	/**
+	 * Validator
+	 */
 	@SuppressWarnings("rawtypes")
 	public static final Validator<List> list = list -> list != null
 			&& !list.isEmpty();
-	public static final Validator<LocalDate> dayOfMonth = c -> c
-			.getDayOfMonth() == 5;
 	public static final Validator<Object> isNull = object -> object == null;
 	public static final Validator<Object> notNull = object -> object != null;
-
 	// Regex
-	public static boolean isNumeric(String str) {
-		return str.matches("[+-]?\\d*(\\.\\d+)?");
-	}
+	public static final Validator<String> isNumeric = numeric -> numeric
+			.matches("[+-]?\\d*(\\.\\d+)?");
+	public static final Validator<String> isAlpha = alpha -> alpha
+			.matches("[a-zA-Z]+");
+	public static final Validator<String> isAlphaNumeric = alphaNumeric -> alphaNumeric
+			.matches("^[a-zA-Z0-9]*$");
+	// Regex Brazilian
+	public static final Validator<String> telefone = numeroTelefone -> numeroTelefone
+			.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}")
+			|| numeroTelefone
+					.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}"); // (XX)
+																				// XXXXX-XXXX
+																				// e
+																				// (XX)
+																				// XXXX-XXXX
+	public static final Validator<String> email = email -> email
+			.matches("[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@{1}[a-zA-Z0-9_.-]*\\.+[a-z]{2,4}");
 
-	public static boolean isAlpha(String name) {
-		return name.matches("[a-zA-Z]+");
-	}
+	// CPF
+	public static final Validator<String> cpf = strCpf -> {
+		// inicio
+		int d1, d2;
+		int digito1, digito2, resto;
+		int digitoCPF;
+		String nDigResult;
 
-	public static boolean isAlphaNumeric(String s) {
-		return s.matches("^[a-zA-Z0-9]*$");
-	}
+		d1 = d2 = 0;
+		digito1 = digito2 = resto = 0;
+
+		for (int nCount = 1; nCount < strCpf.length() - 1; nCount++) {
+			digitoCPF = Integer.valueOf(strCpf.substring(nCount - 1, nCount))
+					.intValue();
+
+			// multiplique a ultima casa por 2 a seguinte por 3 a seguinte por 4
+			// e assim por diante.
+			d1 = d1 + (11 - nCount) * digitoCPF;
+
+			// para o segundo digito repita o procedimento incluindo o primeiro
+			// digito calculado no passo anterior.
+			d2 = d2 + (12 - nCount) * digitoCPF;
+		}
+		;
+
+		// Primeiro resto da divisão por 11.
+		resto = (d1 % 11);
+
+		// Se o resultado for 0 ou 1 o digito é 0 caso contrário o digito é 11
+		// menos o resultado anterior.
+		if (resto < 2)
+			digito1 = 0;
+		else
+			digito1 = 11 - resto;
+
+		d2 += 2 * digito1;
+
+		// Segundo resto da divisão por 11.
+		resto = (d2 % 11);
+
+		// Se o resultado for 0 ou 1 o digito é 0 caso contrário o digito é 11
+		// menos o resultado anterior.
+		if (resto < 2)
+			digito2 = 0;
+		else
+			digito2 = 11 - resto;
+
+		// Digito verificador do CPF que está sendo validado.
+		String nDigVerific = strCpf.substring(strCpf.length() - 2,
+				strCpf.length());
+
+		// Concatenando o primeiro resto com o segundo.
+		nDigResult = String.valueOf(digito1) + String.valueOf(digito2);
+
+		// comparar o digito verificador do cpf com o primeiro resto + o segundo
+		// resto.
+		return nDigVerific.equals(nDigResult);
+		// fim
+	};
 
 	// SearchWord
 	public static Integer search(String word, String text) {

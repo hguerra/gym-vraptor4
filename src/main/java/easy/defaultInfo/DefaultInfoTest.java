@@ -1,4 +1,4 @@
-package test.hibernate;
+package easy.defaultInfo;
 
 import br.com.model.bean.Endereco;
 import br.com.model.bean.Usuario;
@@ -24,10 +24,10 @@ public class DefaultInfoTest {
 		usuario.setEndereco(getEndereco());
 		return usuario;
 	}
-	public static void generateUserInfo(Usuario usuario, String nome){
+	public static void generateUserInfo(Usuario usuario, String nome, String email){
 		usuario.setNome(nome);
 		usuario.setSobreNome("Sobrenome");
-		usuario.setEmail("teste@gmail.com");
+		usuario.setEmail(email);
 		usuario.setSenha("teste");
 		usuario.setEndereco(getEndereco());
 	}

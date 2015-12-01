@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import br.com.dao.DefaultUsuarioDao;
 import br.com.model.bean.Usuario;
 import br.com.model.engine.Aviso;
-import br.com.model.engine.Postman;
+import br.com.model.mail.Postman;
 import br.com.validation.Util;
 
 public class BlackListCheck implements Runnable {

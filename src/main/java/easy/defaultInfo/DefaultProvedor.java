@@ -1,7 +1,9 @@
-package br.com.model.mail;
+package easy.defaultInfo;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import br.com.model.mail.Provedor;
 
 public class DefaultProvedor {
 	private Map<String, Provedor> provedores = new HashMap<String, Provedor>();

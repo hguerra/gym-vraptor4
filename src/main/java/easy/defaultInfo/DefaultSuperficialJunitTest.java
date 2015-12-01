@@ -1,4 +1,4 @@
-package test.hibernate;
+package easy.defaultInfo;
 
 import java.util.List;
 import java.util.Set;
