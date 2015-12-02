@@ -31,22 +31,31 @@
 						<h4>Treino</h4>
 					</div>
 
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Exercicio</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${treinoList}" var="treino">
+					<c:if test="${empty treinos}">
+						<div class="alert alert-dismissable alert-warning">
+							<button type="button" class="close" data-dismiss="alert"></button>
+							Não há treinos cadastrados
+						</div>
+					</c:if>
+
+					<c:if test="${not empty  treinos}">
+						<table class="table table-striped">
+							<thead>
 								<tr>
-									<td>${treino.id}</td>
-									<td>${treino.exercicio}</td>
+									<th>#</th>
+									<th>Exercicio</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${treinos}" var="treino">
+									<tr>
+										<td>${treino.id}</td>
+										<td>${treino.exercicio}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:if>
 				</div>
 			</div>
 			<div class="row">
@@ -61,16 +70,13 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>Visualizar Status</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${statusList}" var="status">
+							<c:forEach items="status" var="str">
 								<tr>
-									<td>${status.id}</td>
-									<td>${status.month}</td>
-									<td>${status.pago}</td>
+									<td><c:out value="${status}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>

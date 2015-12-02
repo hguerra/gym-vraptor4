@@ -44,6 +44,10 @@ public class DefaultFluxoCaixa implements FluxoCaixa {
 		historico.setSaldo(saldo);
 		historicoDao.update(historico);
 	}
+	
+	public Historico getHistorico(){
+		return historico;
+	}
 
 	private void loadHistorico(long id) {
 		Historico ultima = historicoDao.search(id, Historico.class);

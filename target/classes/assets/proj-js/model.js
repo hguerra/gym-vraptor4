@@ -54,6 +54,33 @@ $(document).ready(function() {
 	function getInterval(min){
 		return 1000*60*min;
 	}
+	
+	function setDataBrasil(id){
+		$("#"+id).datepicker(
+				{
+					dateFormat : 'dd/mm/yy',
+					dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta',
+							'Quinta', 'Sexta', 'Sábado' ],
+					dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D' ],
+					dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex',
+							'Sáb', 'Dom' ],
+					monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril',
+							'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
+							'Outubro', 'Novembro', 'Dezembro' ],
+					monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai',
+							'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+					nextText : 'Próximo',
+					prevText : 'Anterior'
+				});
+	}
+	
+	function setDataAmerica(id){
+		$("#"+id).datepicker({dateFormat : 'yy-mm-dd'});
+	}
+	
+	function setData(id){
+		$("#"+id).datepicker();
+	}
 
 
 	/* Run */
@@ -67,5 +94,7 @@ $(document).ready(function() {
 
 //	//atualizando
 //	setInterval(ajaxCall, getInterval(2));
+	
+	setDataAmerica("dataFinalizacao");
 
 });

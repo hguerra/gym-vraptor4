@@ -14,11 +14,45 @@
 			<div class="row">
 				<div class="col-md-12">
 					<br> <br>
+					<div class="alert alert-dismissable alert-warning">
+						<button type="button" class="close" data-dismiss="alert"></button>
+						<h4>Contas</h4>
+						<a href="<%=request.getContextPath()%>/cadastrarConta">cadastrar
+							contas</a> <br><a href="<%=request.getContextPath()%>/cadastrarEvento">cadastrar
+							eventos</a>
+					</div>
+					<c:if test="${not empty contas}">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Valor</th>
+									<th>Transacao</th>
+									<th>Data</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${contas}" var="conta">
+									<tr>
+										<td>${conta.valor}</td>
+										<td>${conta.operacao}</td>
+										<td>${conta.data}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:if>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<br> <br>
 					<div class="alert alert-dismissable alert-info">
 						<button type="button" class="close" data-dismiss="alert"></button>
 						<h4>Buscar Aluno</h4>
 					</div>
-					<form action="<%=request.getContextPath()%>/buscar" class="form-inline">
+					<form action="<%=request.getContextPath()%>/buscar"
+						class="form-inline">
 						<div class="form-group">
 							<label> Nome: </label> <input type="text" class="form-control"
 								id="nome" name="usuario.nome" />
@@ -43,6 +77,9 @@
 										<td>${busca.email}</td>
 										<td><a href="buscar/${busca.id}"><i
 												class="glyphicon glyphicon-search"></i></a></td>
+										<td><a
+											href="<%=request.getContextPath()%>/addExercicio/${busca.id}"><i
+												class="glyphicon glyphicon-plus"></i></a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -56,10 +93,10 @@
 								</tr>
 							</thead>
 							<tbody>
-							
+
 								<c:forEach items="status" var="str">
 									<tr>
-										<td><c:out value="${status}"/></td>
+										<td><c:out value="${status}" /></td>
 									</tr>
 								</c:forEach>
 							</tbody>

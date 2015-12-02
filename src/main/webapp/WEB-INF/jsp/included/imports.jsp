@@ -6,6 +6,8 @@
 
 <link href="<%=request.getContextPath()%>/assets/css/bootstrap.css"
 	rel='stylesheet' type='text/css' />
+<link href="<%=request.getContextPath()%>/assets/css/jquery-ui.css"
+	rel='stylesheet' type='text/css' />
 <link href="<%=request.getContextPath()%>/assets/css/style.css"
 	rel='stylesheet' type='text/css' />
 <meta name="viewport"
@@ -21,7 +23,11 @@
 	
 	
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 
 
@@ -44,6 +50,8 @@
 	src="<%=request.getContextPath()%>/assets/js/jquery.contentcarousel.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/assets/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/assets/js/jquery-ui.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/assets/js/jquery.validate.min.js"></script>
 <script type="text/javascript"

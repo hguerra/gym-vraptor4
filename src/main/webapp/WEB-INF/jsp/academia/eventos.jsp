@@ -48,7 +48,7 @@
 							<div class="box1">
 								<div class="box1_left">
 									<img
-										src="<%=request.getContextPath()%>/assets/images/about_img6.jpg"
+										src="<%=request.getContextPath()%>/assets/images/evento.png"
 										class="img-responsive" alt="" />
 									<div class="desc1">
 										<h3>${evento.nome}<br>
