@@ -25,8 +25,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<br> <br>
-					<div class="alert alert-dismissable alert-sucess">
-
+					<div class="alert alert-dismissable alert-info">
 						<button type="button" class="close" data-dismiss="alert"></button>
 						<h4>Treino</h4>
 					</div>
@@ -61,26 +60,34 @@
 			<div class="row">
 				<div class="col-md-12">
 					<br> <br>
-					<div class="alert alert-dismissable alert-sucess">
-
+					<div class="alert alert-dismissable alert-danger">
 						<button type="button" class="close" data-dismiss="alert"></button>
 						<h4>Dividas</h4>
 					</div>
+					<c:if test="${empty status}">
+						<div class="alert alert-dismissable alert-warning">
+							<button type="button" class="close" data-dismiss="alert"></button>
+							Você não tem dividas!!
+						</div>
 
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Visualizar Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="status" var="str">
+					</c:if>
+					<c:if test="${not empty status}">
+
+						<table class="table table-striped">
+							<thead>
 								<tr>
-									<td><c:out value="${status}" /></td>
+									<th>Visualizar Status</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="status" var="str">
+									<tr>
+										<td><c:out value="${status}" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:if>
 				</div>
 			</div>
 		</div>

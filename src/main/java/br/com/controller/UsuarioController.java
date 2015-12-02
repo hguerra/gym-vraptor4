@@ -1,17 +1,12 @@
 package br.com.controller;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -25,7 +20,6 @@ import br.com.model.bean.Atividade;
 import br.com.model.bean.Lembrete;
 import br.com.model.bean.Usuario;
 import br.com.validation.LoginAvailable;
-import easy.defaultInfo.ControllersInfo;
 
 @Controller
 public class UsuarioController {
@@ -93,17 +87,8 @@ public class UsuarioController {
 
 	@Get("/perfil")
 	public void perfil() {
-		List<String> status = usuarioWeb.getUsuario().getStatus().stream()
-				.map(s -> {
-					StringBuffer str = new StringBuffer();
-					str.append(s.getMonth().toString());
-					if (s.isPago())
-						str.append("-> PAGO");
-					else
-						str.append("-> Não PAGO");
-					return str.toString();
-				}).collect(Collectors.toList());
-
+		List<String> status = dao.carregarStatus(usuarioWeb.getUsuario()
+				.getId());
 		result.include("treinos", usuarioWeb.getUsuario().getTreino());
 		result.include("status", status);
 	}
@@ -120,9 +105,8 @@ public class UsuarioController {
 
 	@Post("/cadastrarAtividade")
 	public void cadastrarAtividade(Atividade atividade) {
-		ControllersInfo.printAccess("cadastrarAtividade", atividade,
-				Arrays.asList("getNome", "getDescricao"));
-
+		atividadeDao.persist(atividade);
+		result.redirectTo(this).atividades();
 	}
 
 	@Post("/cadastrarLembrete")
@@ -145,19 +129,22 @@ public class UsuarioController {
 
 	}
 
-	@Post("/removerEvento/{id}")
-	public void removerEventos(long id) {
-		System.out.println(id);
-	}
-
 	@Post("/removerAtividade/{id}")
 	public void removerAtividade(long id) {
-		System.out.println(id);
+		Atividade atividade = atividadeDao.search(id, Atividade.class);
+		if (atividade != null) {
+			atividadeDao.remove(atividade);
+		}
+		result.redirectTo(this).atividades();
 	}
 
 	@Post("/removerLembrete/{id}")
 	public void removerLembrete(long id) {
-		System.out.println(id);
+		Lembrete lembrete = lembreteDao.search(id, Lembrete.class);
+		if (lembrete != null) {
+			lembreteDao.remove(lembrete);
+		}
+		result.redirectTo(this).lembretes();
 
 	}
 }

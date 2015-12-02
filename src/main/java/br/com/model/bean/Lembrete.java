@@ -48,7 +48,7 @@ public class Lembrete implements Serializable{
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
-	
+
 	
 
 }

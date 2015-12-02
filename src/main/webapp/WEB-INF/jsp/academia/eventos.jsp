@@ -56,7 +56,20 @@
 										<br>
 										<p>
 											<i class="glyphicon glyphicon-time"></i>${evento.data}
+
 										</p>
+										<c:if test="${usuario.logado}">
+											<c:if test="${not usuario.aluno}">
+												<form
+													action="<%=request.getContextPath()%>/removerEvento/${evento.id}"
+													method="post">
+													<button type="submit" name="evento.id" value="${evento.id}">
+														<i class="glyphicon glyphicon-trash"></i>
+													</button>
+												</form>
+											</c:if>
+
+										</c:if>
 										<div class="clear"></div>
 									</div>
 								</div>

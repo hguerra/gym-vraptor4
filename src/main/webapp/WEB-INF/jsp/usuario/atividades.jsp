@@ -23,34 +23,74 @@
 				</div>
 			</div>
 			<div class="row">
+
+				<div class="row">
+					<div class="col-md-8">
+						<br> <br>
+						<div class="alert alert-dismissable alert-info">
+							<button type="button" class="close" data-dismiss="alert"></button>
+							<h4>Cadastrar Atividades</h4>
+						</div>
+						<form action="<%=request.getContextPath()%>/cadastrarAtividade"
+							method="post">
+							<div class="form-group col-md-4">
+								<label> Nome: </label> <input type="text" class="form-control"
+									name="atividade.nome" />
+							</div>
+							<div class="form-group col-md-4">
+								<label> Descricao: </label> <input type="text"
+									class="form-control" name="atividade.descricao" />
+							</div>
+							<br>
+							<button type="submit" class="btn btn-default">Cadastrar</button>
+
+						</form>
+						<br> <br>
+					</div>
+				</div>
 				<div class="col-md-12">
 					<br> <br>
-					<div class="alert alert-dismissable alert-sucess">
-
+					<div class="alert alert-dismissable alert-info">
 						<button type="button" class="close" data-dismiss="alert"></button>
-						<h4>Atividades</h4>
+						<h4>Atividades!</h4>
 					</div>
+					<c:if test="${empty atividades}">
+						<div class="alert alert-dismissable alert-warning">
+							<button type="button" class="close" data-dismiss="alert"></button>
+							<h4>Voce Nao Tem Atividades!</h4>
+						</div>
 
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#id</th>
-								<th>Nome</th>
-								<th>Descricao</th>
-								<th>Concluido</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${atividadesList}" var="atividade">
+					</c:if>
+
+					<c:if test="${not empty atividades}">
+
+						<table class="table table-striped">
+							<thead>
 								<tr>
-									<td>${atividade.id}</td>
-									<td>${atividade.nome}</td>
-									<td>${atividade.descricao}</td>
-									<td>${atividade.concluido}</td>
+									<th>Nome</th>
+									<th>Descricao</th>
+									<th>Concluido</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${atividades}" var="atividade">
+									<tr>
+										<td>${atividade.nome}</td>
+										<td>${atividade.descricao}</td>
+										<td>${atividade.concluido}</td>
+										<td><form
+												action="<%=request.getContextPath()%>/removerAtividade/${atividade.id}"
+												method="post">
+												<button type="submit" name="atividade.id"
+													value="${atividade.id}">
+													<i class="glyphicon glyphicon-trash"></i>
+												</button>
+											</form></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:if>
 				</div>
 			</div>
 		</div>

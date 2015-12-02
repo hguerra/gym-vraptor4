@@ -213,6 +213,15 @@ public class AcademiaController {
 
 	}
 
+	@Post("/removerEvento/{id}")
+	public void removerEventos(long id) {
+		Evento evento = eventoDao.search(id, Evento.class);
+		if (evento != null) {
+			eventoDao.remove(evento);
+		}
+		result.redirectTo(this).eventos();
+	}
+
 	@Get("/eventos")
 	public void eventos() {
 		List<Evento> eventos = eventoDao.getAll(Evento.class);

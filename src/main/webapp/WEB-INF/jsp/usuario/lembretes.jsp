@@ -23,32 +23,70 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-md-8">
+					<br> <br>
+					<div class="alert alert-dismissable alert-info">
+						<button type="button" class="close" data-dismiss="alert"></button>
+						<h4>Cadastrar Lembretes</h4>
+					</div>
+					<form action="<%=request.getContextPath()%>/cadastrarLembrete"
+						method="post">
+						<div class="form-group col-md-4">
+							<label> Lembrete: </label> <input type="text"
+								class="form-control" name="evento.nome" />
+						</div>
+						<div class="form-group col-md-4">
+							<label> Data: </label><input type="text" class="form-control"
+								id="dataFinalizacao" name="evento.data">
+						</div>
+						<br>
+						<button type="submit" class="btn btn-default">Cadastrar</button>
+
+					</form>
+					<br> <br>
+				</div>
+			</div>
+
+			<div class="row">
 				<div class="col-md-12">
 					<br> <br>
-					<div class="alert alert-dismissable alert-sucess">
-
+					<div class="alert alert-dismissable alert-info">
 						<button type="button" class="close" data-dismiss="alert"></button>
 						<h4>Lembretes</h4>
 					</div>
+					<c:if test="${empty lembretes}">
+						<div class="alert alert-dismissable alert-warning">
+							<button type="button" class="close" data-dismiss="alert"></button>
+							<h4>Voce Nao Tem Lembretes!</h4>
+						</div>
 
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#id</th>
-								<th>Lembretes</th>
-								<th>Data</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${lembreteList}" var="lembrete">
+					</c:if>
+					<c:if test="${not empty lembretes}">
+						<table class="table table-striped">
+							<thead>
 								<tr>
-									<td>${treino.id}</td>
-									<td>${lembrete.lembrete}</td>
-									<td>${lembrete.data}</td>
+									<th>Lembretes</th>
+									<th>Data</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach items="${lembretes}" var="lembrete">
+									<tr>
+										<td>${lembrete.lembrete}</td>
+										<td>${lembrete.data}</td>
+										<td><form
+												action="<%=request.getContextPath()%>/removerLembrete/${lembrete.id}"
+												method="post">
+												<button type="submit" name="lembrete.id"
+													value="${lembrete.id}">
+													<i class="glyphicon glyphicon-trash"></i>
+												</button>
+											</form></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:if>
 				</div>
 			</div>
 		</div>
