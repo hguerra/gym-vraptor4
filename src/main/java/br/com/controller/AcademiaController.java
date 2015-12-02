@@ -16,6 +16,7 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.dao.DefaultUsuarioDao;
 import br.com.infra.HibernateDao;
+import br.com.interceptor.Funcionario;
 import br.com.interceptor.UsuarioInfo;
 import br.com.model.bean.Evento;
 import br.com.model.bean.Historico;
@@ -58,7 +59,7 @@ public class AcademiaController {
 		this.contasDao = contasDao;
 
 	}
-
+	@Funcionario
 	@Get("/adm")
 	public void painelAdm() {
 		Historico historico = academia.getGestorCaixa().getHistorico();
@@ -66,6 +67,7 @@ public class AcademiaController {
 		result.include("contas", transacoes);
 	}
 
+	@Funcionario
 	@Get("/addExercicio/{id}")
 	public void aluno(long id) {
 		Usuario usuario = userDao.search(id, Usuario.class);
@@ -76,7 +78,7 @@ public class AcademiaController {
 		result.include("treinos", usuario.getTreino());
 
 	}
-
+	@Funcionario
 	@Post("/addExercicio/{id}/treino")
 	public void cadastrarTreino(long id, Treino treino) {
 		Usuario usuario = userDao.search(id, Usuario.class);
@@ -87,7 +89,7 @@ public class AcademiaController {
 		userDao.update(usuario);
 		result.redirectTo(this).aluno(id);
 	}
-
+	@Funcionario
 	@Post("/removeExercicio/{userId}/treino/{treinoId}")
 	public void removerTreino(long userId, long treinoId) {
 		Usuario usuario = userDao.search(userId, Usuario.class);
@@ -107,7 +109,7 @@ public class AcademiaController {
 
 		result.redirectTo(this).aluno(userId);
 	}
-
+	@Funcionario
 	@Get("/buscar")
 	public void buscarAluno(Usuario usuario) {
 		// ControllersInfo.printAccess("buscarAluno", usuario,
@@ -119,7 +121,7 @@ public class AcademiaController {
 		result.include("usuarios", usuarios);
 		result.forwardTo(this).painelAdm();
 	}
-
+	@Funcionario
 	@Get("/buscar/{id}")
 	public void buscarAlunoStatus(long id) {
 		List<String> status = userDao.carregarStatus(id);
@@ -129,17 +131,17 @@ public class AcademiaController {
 		result.include("status", status);
 		result.forwardTo(this).painelAdm();
 	}
-
+	@Funcionario
 	@Get("/buscarTodosAlunos")
 	public List<Usuario> buscarTodosAlunos() {
 		return userDao.getAll(Usuario.class);
 	}
-
+	@Funcionario
 	@Get("/inadimplentes")
 	public void buscarTodosDevedores() {
 		result.include("devedores", userDao.buscaTodosAlunoQueDevemDinheiro());
 	}
-
+	@Funcionario
 	@Post
 	public void cobrar(String email) {
 		Aviso aviso = new Aviso();
@@ -149,12 +151,12 @@ public class AcademiaController {
 		new Thread(new Postman(aviso)).start();
 		result.redirectTo(this).buscarTodosDevedores();
 	}
-
+	@Funcionario
 	@Get("/cadastrarConta")
 	public void contasForm() {
 
 	}
-
+	@Funcionario
 	@Post("/cadastrarConta")
 	public void cadastrarConta() {
 		try {
@@ -181,12 +183,12 @@ public class AcademiaController {
 		}
 
 	}
-
+	@Funcionario
 	@Get("/cadastrarEvento")
 	public void eventosForm() {
 
 	}
-
+	@Funcionario
 	@Post("/cadastrarEvento")
 	public void cadastrarEventos() {
 		try {
@@ -212,7 +214,7 @@ public class AcademiaController {
 		}
 
 	}
-
+	@Funcionario
 	@Post("/removerEvento/{id}")
 	public void removerEventos(long id) {
 		Evento evento = eventoDao.search(id, Evento.class);

@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.dao.DefaultUsuarioDao;
 import br.com.infra.HibernateDao;
+import br.com.interceptor.Aluno;
 import br.com.interceptor.UsuarioInfo;
 import br.com.model.bean.Atividade;
 import br.com.model.bean.Lembrete;
@@ -75,6 +76,7 @@ public class UsuarioController {
 	@Post("/register")
 	public void register(@LoginAvailable Usuario usuario) {
 		validator.onErrorForwardTo(this).register();
+		usuario.setAluno(true);
 		dao.persist(usuario);
 		result.redirectTo(this).login();
 	}
@@ -85,6 +87,7 @@ public class UsuarioController {
 		result.redirectTo(IndexController.class).index();
 	}
 
+	@Aluno
 	@Get("/perfil")
 	public void perfil() {
 		List<String> status = dao.carregarStatus(usuarioWeb.getUsuario()
@@ -93,22 +96,26 @@ public class UsuarioController {
 		result.include("status", status);
 	}
 
+	@Aluno
 	@Get("/atividades")
 	public void atividades() {
 		result.include("atividades", atividadeDao.getAll(Atividade.class));
 	}
 
+	@Aluno
 	@Get("/lembretes")
 	public void lembretes() {
 		result.include("lembretes", lembreteDao.getAll(Lembrete.class));
 	}
 
+	@Aluno
 	@Post("/cadastrarAtividade")
 	public void cadastrarAtividade(Atividade atividade) {
 		atividadeDao.persist(atividade);
 		result.redirectTo(this).atividades();
 	}
 
+	@Aluno
 	@Post("/cadastrarLembrete")
 	public void cadastrarLembrete() {
 		try {
@@ -129,6 +136,7 @@ public class UsuarioController {
 
 	}
 
+	@Aluno
 	@Post("/removerAtividade/{id}")
 	public void removerAtividade(long id) {
 		Atividade atividade = atividadeDao.search(id, Atividade.class);
@@ -138,6 +146,7 @@ public class UsuarioController {
 		result.redirectTo(this).atividades();
 	}
 
+	@Aluno
 	@Post("/removerLembrete/{id}")
 	public void removerLembrete(long id) {
 		Lembrete lembrete = lembreteDao.search(id, Lembrete.class);
